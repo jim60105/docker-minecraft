@@ -5,12 +5,10 @@ services:
     depends_on:
       - seq-input-syslog
     restart: always
-    security_opt:
-      - label:disable
     ports:
       - 25565:25565
     volumes:
-      - /mcdata:/data:z
+      - ./mcdata:/data:z
       - ./plugins:/plugins:Z
       - ./log4j2.xml:/data/log4j2.xml:Z
     hostname: ${MC_HOST}
@@ -31,7 +29,7 @@ services:
       MAX_PLAYERS: 50
       # VIEW_DISTANCE: 10
       PLAYER_IDLE_TIMEOUT: 10
-      STOP_SERVER_ANNOUNCE_DELAY: 60
+      # STOP_SERVER_ANNOUNCE_DELAY: 60
       #
       ## Customize
       MOTD: ${MOTD}
@@ -69,7 +67,7 @@ services:
       resources:
         limits:
           memory: 30G
-    stop_grace_period: 1m30s
+    # stop_grace_period: 1m30s
     ## Not for podman
     # logging:
     #   driver: gelf
@@ -79,27 +77,27 @@ services:
     #     tag: minecraft
     #     labels: minecraft
 
-  # https://github.com/itzg/docker-mc-backup
-  backups:
-    image: docker.io/itzg/mc-backup
-    depends_on:
-      - minecraft
-    environment:
-      TZ: Asia/Taipei
-      BACKUP_INTERVAL: "24h"
-      RCON_HOST: minecraft
-      RCON_PASSWORD: ${RCON_PASSWORD}
-      INITIAL_DELAY: 120
-      PAUSE_IF_NO_PLAYERS: true
-      BACKUP_METHOD: restic
-      RESTIC_VERBOSE: true
-      RESTIC_PASSWORD: ${MC_HOST}
-      RESTIC_REPOSITORY: s3:${S3_HOST}/mcbackups
-      AWS_ACCESS_KEY_ID: mcbackups
-      AWS_SECRET_ACCESS_KEY: ${MC_HOST}
-    volumes:
-      - /mcdata:/data:ro,z
-      - backups:/backups:z
+  # # https://github.com/itzg/docker-mc-backup
+  # backups:
+  #   image: docker.io/itzg/mc-backup
+  #   depends_on:
+  #     - minecraft
+  #   environment:
+  #     TZ: Asia/Taipei
+  #     BACKUP_INTERVAL: "24h"
+  #     RCON_HOST: minecraft
+  #     RCON_PASSWORD: ${RCON_PASSWORD}
+  #     INITIAL_DELAY: 120
+  #     PAUSE_IF_NO_PLAYERS: true
+  #     BACKUP_METHOD: restic
+  #     RESTIC_VERBOSE: true
+  #     RESTIC_PASSWORD: ${MC_HOST}
+  #     RESTIC_REPOSITORY: s3:${S3_HOST}/mcbackups
+  #     AWS_ACCESS_KEY_ID: mcbackups
+  #     AWS_SECRET_ACCESS_KEY: ${MC_HOST}
+  #   volumes:
+  #     - /mcdata:/data:ro,z
+  #     - backups:/backups:z
 
   # Must setup log4j2.xml to send logs to syslog
   # ref:

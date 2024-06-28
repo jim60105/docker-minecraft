@@ -4,7 +4,7 @@ services:
     image: restic/restic
     restart: "no"
     volumes:
-      - /mcdata:/backups:z
+      - ./mcdata:/backups
     environment:
       RESTIC_REPOSITORY: s3:${S3_HOST}/mcbackups
       RESTIC_PASSWORD: ${MC_HOST}
