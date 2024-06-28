@@ -1,0 +1,16 @@
+services:
+  # Run this service to restore the backup from S3 to a local volume
+  restore-from-s3:
+    image: restic/restic
+    restart: "no"
+    volumes:
+      - /mcdata:/backups:z
+    environment:
+      RESTIC_REPOSITORY: s3:${S3_HOST}/mcbackups
+      RESTIC_PASSWORD: ${MC_HOST}
+      AWS_ACCESS_KEY_ID: mcbackups
+      AWS_SECRET_ACCESS_KEY: ${MC_HOST}
+    command:
+      - restore
+      - latest:/data
+      - --target=/backups
