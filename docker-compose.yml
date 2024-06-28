@@ -97,6 +97,7 @@ services:
       RESTIC_REPOSITORY: s3:${S3_HOST}/mcbackups
       AWS_ACCESS_KEY_ID: mcbackups
       AWS_SECRET_ACCESS_KEY: ${MC_HOST}
+      EXCLUDES: "*.jar,*_sample"
     volumes:
       - /mcdata:/data:ro,z
       - backups:/backups:z
