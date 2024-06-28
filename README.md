@@ -47,12 +47,12 @@
 > Please refer to the license files for each container image and plugin used in this project.  
 > The following is the license for the docker compose files and setting files in this repository.
 
-<img src="https://github.com/jim60105/docker-minecraft/assets/16995691/d60ccaaf-b771-48e2-a260-b3af9417ac07" alt="gplv3" width="300" />
+<img src="https://github.com/jim60105/docker-minecraft/assets/16995691/df3fe810-c619-46b0-9e82-ab7e597e545f" alt="agplv3" width="300" />
 
-[GNU GENERAL PUBLIC LICENSE Version 3](LICENSE)
+[GNU AFFERO GENERAL PUBLIC LICENSE Version 3](/LICENSE)
 
-This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 
-This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
 
-You should have received a copy of the GNU General Public License along with this program. If not, see <https://www.gnu.org/licenses/>.
+You should have received a copy of the GNU Affero General Public License along with this program. If not, see <https://www.gnu.org/licenses/>.
